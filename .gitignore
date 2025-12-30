@@ -1,0 +1,13 @@
+# Node modules (for serve or future dev tools)
+node_modules/
+
+# macOS system files
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: local server folders
+demo/.cache/
