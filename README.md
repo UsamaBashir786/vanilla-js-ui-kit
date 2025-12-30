@@ -32,7 +32,7 @@ npm install
 npm start
 ```
 
-Then include the required component files from the demo/src/ directory.
+Then include the required component files from the docs/src/ directory.
 
 ### CDN (Experimental)
 
@@ -40,11 +40,11 @@ For testing or demo purposes, you can import individual components directly from
 
 ```html
 <script type="module">
-  import { Modal } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/modal.js';
-  import { Toast } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/toast.js';
-  import { Tabs } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/tabs.js';
-  import { Dropdown } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/dropdown.js';
-  import { Accordion } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/accordion.js';
+  import { Modal } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/docs/src/modal.js';
+  import { Toast } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/docs/src/toast.js';
+  import { Tabs } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/docs/src/tabs.js';
+  import { Dropdown } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/docs/src/dropdown.js';
+  import { Accordion } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/docs/src/accordion.js';
 </script>
 ```
 
@@ -55,7 +55,7 @@ Note: For production usage, it is recommended to bundle the files locally.
 ### Modal
 
 ```js
-import { Modal } from './demo/src/modal.js';
+import { Modal } from './docs/src/modal.js';
 
 const modal = new Modal({
   title: 'Welcome',
@@ -69,7 +69,7 @@ modal.open();
 ### Toast
 
 ```js
-import { Toast } from './demo/src/toast.js';
+import { Toast } from './docs/src/toast.js';
 
 Toast.show({
   message: 'Operation completed successfully!',
@@ -81,7 +81,7 @@ Toast.show({
 ### Tabs
 
 ```js
-import { Tabs } from './demo/src/tabs.js';
+import { Tabs } from './docs/src/tabs.js';
 
 new Tabs({
   container: document.getElementById('tabs-container')
@@ -91,7 +91,7 @@ new Tabs({
 ### Dropdown
 
 ```js
-import { Dropdown } from './demo/src/dropdown.js';
+import { Dropdown } from './docs/src/dropdown.js';
 
 const dropdown = new Dropdown({
   trigger: document.getElementById('dropdown-btn'),
@@ -103,7 +103,7 @@ dropdown.init();
 ### Accordion
 
 ```js
-import { Accordion } from './demo/src/accordion.js';
+import { Accordion } from './docs/src/accordion.js';
 
 const accordion = new Accordion({
   container: document.getElementById('accordion-container')
@@ -144,7 +144,7 @@ python -m SimpleHTTPServer 8000
 Open the demo in your browser:
 
 ```bash
-http://localhost:8000/demo/index.html
+http://localhost:8000/docs/index.html
 ```
 
 ### Using Node.js
@@ -163,7 +163,7 @@ http-server
 ### Using VS Code
 
 1. Install the Live Server extension
-2. Right-click demo/index.html
+2. Right-click docs/index.html
 3. Select "Open with Live Server"
 
 Opening the file directly from the file system may cause CORS issues due to ES module restrictions.
