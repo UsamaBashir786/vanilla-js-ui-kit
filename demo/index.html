@@ -74,10 +74,22 @@
     </div>
   </div>
 
+  <div style="position: relative;">
+    <button id="dropdown-btn">Dropdown</button>
+    <div id="dropdown-menu">
+      <p>Option 1</p>
+      <p>Option 2</p>
+      <p>Option 3</p>
+    </div>
+  </div>
+
+
   <script type="module">
     import { Modal } from '../src/modal.js';
     import { Toast } from '../src/toast.js';
     import { Tabs } from '../src/tabs.js';
+    import { Dropdown } from './src/dropdown.js';
+
 
     // Modal buttons
     document.getElementById('open-modal').addEventListener('click', () => {
@@ -102,10 +114,14 @@
     document.getElementById('toast-error').addEventListener('click', () => Toast.show({ message: 'Error!', type: 'error', duration: 3000 }));
     document.getElementById('toast-warning').addEventListener('click', () => Toast.show({ message: 'Warning!', type: 'warning', duration: 3000 }));
     document.getElementById('toast-info').addEventListener('click', () => Toast.show({ message: 'Info message', type: 'info', duration: 3000 }));
-
+    const dropdown = new Dropdown({
+      trigger: document.getElementById('dropdown-btn'),
+      menu: document.getElementById('dropdown-menu')
+    });
     // Tabs
     const tabs = new Tabs({ container: '#tabs-container', defaultTab: 0 });
     tabs.init();
+    dropdown.init();
   </script>
 </body>
 </html>
