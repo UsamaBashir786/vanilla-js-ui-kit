@@ -1,0 +1,25 @@
+{
+  "name": "vanilla-js-ui-kit",
+  "version": "1.0.0",
+  "description": "A lightweight, dependency-free JavaScript UI components library for cross-browser compatible user interfaces",
+  "main": "src/modal.js",
+  "type": "module",
+  "keywords": [
+    "ui",
+    "components",
+    "vanilla-js",
+    "javascript",
+    "browser",
+    "cross-browser",
+    "modal",
+    "toast",
+    "tabs",
+    "frontend"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vanilla-js-ui-kit"
+  }
+}
