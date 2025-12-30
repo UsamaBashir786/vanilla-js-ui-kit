@@ -16,6 +16,8 @@ A lightweight, dependency-free JavaScript UI components library for building res
 - **Modal** – Configurable modal dialogs with backdrop, Escape key handling, and callbacks
 - **Toast** – Lightweight notification system with multiple message types
 - **Tabs** – Accessible tab navigation for structured content
+- **Dropdown** – Toggleable dropdown menus with click-outside handling
+- **Accordion** – Collapsible content sections for structured layouts
 
 ## Installation
 
@@ -38,6 +40,8 @@ For testing or demo purposes, you can import individual components directly from
   import { Modal } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/modal.js';
   import { Toast } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/toast.js';
   import { Tabs } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/tabs.js';
+  import { Dropdown } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/dropdown.js';
+  import { Accordion } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/accordion.js';
 </script>
 ```
 
@@ -53,9 +57,7 @@ import { Modal } from './src/modal.js';
 const modal = new Modal({
   title: 'Welcome',
   content: '<p>This is a modal dialog</p>',
-  onClose: () => {
-    console.log('Modal closed');
-  }
+  onClose: () => console.log('Modal closed')
 });
 
 modal.open();
@@ -81,6 +83,29 @@ import { Tabs } from './src/tabs.js';
 new Tabs({
   container: document.getElementById('tabs-container')
 });
+```
+
+### Dropdown
+
+```js
+import { Dropdown } from './src/dropdown.js';
+
+const dropdown = new Dropdown({
+  trigger: document.getElementById('dropdown-btn'),
+  menu: document.getElementById('dropdown-menu')
+});
+dropdown.init();
+```
+
+### Accordion
+
+```js
+import { Accordion } from './src/accordion.js';
+
+const accordion = new Accordion({
+  container: document.getElementById('accordion-container')
+});
+accordion.init();
 ```
 
 ## Browser Testing
@@ -127,7 +152,7 @@ http-server
 
 1. Install the Live Server extension
 2. Right-click demo/index.html
-3. Select Open with Live Server
+3. Select "Open with Live Server"
 
 Opening the file directly from the file system may cause CORS issues due to ES module restrictions.
 
@@ -176,16 +201,3 @@ If you find this project useful:
 - 🚀 Suggest improvements or features
 
 Built with ❤️ for the open-source community
-
----
-
-## ✅ WHAT TO DO NOW (IMPORTANT)
-
-1. Replace your `README.md` with the above
-2. Commit it:
-
-```bash
-git add README.md
-git commit -m "Improve documentation and usage examples"
-git push
-```
