@@ -118,11 +118,13 @@
   </div>
 
   <script type="module">
+    import { Accordion } from './src/accordion.js';
+    import { Dropdown } from '../src/dropdown.js';
     import { Modal } from '../src/modal.js';
     import { Toast } from '../src/toast.js';
     import { Tabs } from '../src/tabs.js';
-    import { Dropdown } from '../src/dropdown.js';
-
+    
+    
 
     // Modal buttons
     document.getElementById('open-modal').addEventListener('click', () => {
@@ -151,10 +153,14 @@
       trigger: document.getElementById('dropdown-btn'),
       menu: document.getElementById('dropdown-menu')
     });
+
+    const accordion = new Accordion('#my-accordion');
+
     // Tabs
     const tabs = new Tabs({ container: '#tabs-container', defaultTab: 0 });
-    tabs.init();
+    accordion.init();
     dropdown.init();
+    tabs.init();
   </script>
 </body>
 </html>
