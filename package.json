@@ -19,13 +19,15 @@
     "modal",
     "toast",
     "tabs",
+    "dropdown",
+    "accordion",
     "frontend"
   ],
-  "author": "Your Name",
+  "author": "Usama Bashir",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/vanilla-js-ui-kit"
+    "url": "https://github.com/UsamaBashir786/vanilla-js-ui-kit"
   },
   "devDependencies": {
     "serve": "^14.2.0"
