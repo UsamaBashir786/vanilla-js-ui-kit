@@ -5,7 +5,7 @@ export class Tabs {
       defaultTab: options.defaultTab || 0,
       onChange: options.onChange || null
     };
-    
+
     this.container = null;
     this.tabButtons = [];
     this.tabPanels = [];
@@ -13,11 +13,10 @@ export class Tabs {
   }
 
   init() {
-    if (typeof this.options.container === 'string') {
-      this.container = document.querySelector(this.options.container);
-    } else {
-      this.container = this.options.container;
-    }
+    this.container = 
+      typeof this.options.container === 'string'
+        ? document.querySelector(this.options.container)
+        : this.options.container;
 
     if (!this.container) {
       console.error('Tabs: Container not found');
@@ -27,68 +26,57 @@ export class Tabs {
     this.tabButtons = Array.from(this.container.querySelectorAll('[data-tab-button]'));
     this.tabPanels = Array.from(this.container.querySelectorAll('[data-tab-panel]'));
 
-    if (this.tabButtons.length === 0 || this.tabPanels.length === 0) {
+    if (!this.tabButtons.length || !this.tabPanels.length) {
       console.error('Tabs: No tab buttons or panels found');
       return;
     }
 
-    this.setupEventListeners();
     this.applyStyles();
+    this.setupEventListeners();
     this.showTab(this.activeIndex);
   }
 
   setupEventListeners() {
     this.tabButtons.forEach((button, index) => {
-      button.addEventListener('click', () => {
-        this.showTab(index);
-      });
+      button.addEventListener('click', () => this.showTab(index));
     });
   }
 
   applyStyles() {
     const tabList = this.tabButtons[0]?.parentElement;
     if (tabList) {
-      tabList.style.cssText = `
-        display: flex;
-        border-bottom: 2px solid #e5e7eb;
-        margin-bottom: 16px;
-      `;
+      Object.assign(tabList.style, {
+        display: 'flex',
+        borderBottom: '2px solid #e5e7eb',
+        marginBottom: '16px'
+      });
     }
 
     this.tabButtons.forEach(button => {
-      button.style.cssText = `
-        background: none;
-        border: none;
-        padding: 12px 24px;
-        cursor: pointer;
-        font-size: 16px;
-        color: #6b7280;
-        border-bottom: 2px solid transparent;
-        margin-bottom: -2px;
-        transition: all 0.2s;
-      `;
+      Object.assign(button.style, {
+        background: 'none',
+        border: 'none',
+        padding: '12px 24px',
+        cursor: 'pointer',
+        fontSize: '16px',
+        color: '#6b7280',
+        borderBottom: '2px solid transparent',
+        marginBottom: '-2px',
+        transition: 'all 0.2s'
+      });
     });
 
     this.tabPanels.forEach(panel => {
-      panel.style.cssText = `
-        display: none;
-      `;
+      panel.style.display = 'none';
     });
   }
 
   showTab(index) {
-    if (index < 0 || index >= this.tabButtons.length) {
-      return;
-    }
+    if (index < 0 || index >= this.tabButtons.length) return;
 
     this.tabButtons.forEach((button, i) => {
-      if (i === index) {
-        button.style.color = '#3b82f6';
-        button.style.borderBottomColor = '#3b82f6';
-      } else {
-        button.style.color = '#6b7280';
-        button.style.borderBottomColor = 'transparent';
-      }
+      button.style.color = i === index ? '#3b82f6' : '#6b7280';
+      button.style.borderBottomColor = i === index ? '#3b82f6' : 'transparent';
     });
 
     this.tabPanels.forEach((panel, i) => {
@@ -97,7 +85,7 @@ export class Tabs {
 
     this.activeIndex = index;
 
-    if (this.options.onChange) {
+    if (typeof this.options.onChange === 'function') {
       this.options.onChange(index);
     }
   }

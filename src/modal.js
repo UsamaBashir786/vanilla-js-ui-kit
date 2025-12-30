@@ -6,69 +6,70 @@ export class Modal {
       onClose: options.onClose || null,
       closeOnBackdrop: options.closeOnBackdrop !== false
     };
-    
+
     this.modalElement = null;
     this.backdropElement = null;
   }
 
+  // Create modal DOM elements
   create() {
+    // Backdrop
     this.backdropElement = document.createElement('div');
     this.backdropElement.className = 'modal-backdrop';
-    this.backdropElement.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    `;
+    Object.assign(this.backdropElement.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0,0,0,0.5)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: '1000'
+    });
 
+    // Modal container
     this.modalElement = document.createElement('div');
     this.modalElement.className = 'modal';
-    this.modalElement.style.cssText = `
-      background: white;
-      border-radius: 8px;
-      padding: 24px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: relative;
-    `;
+    Object.assign(this.modalElement.style, {
+      background: '#fff',
+      borderRadius: '8px',
+      padding: '24px',
+      maxWidth: '500px',
+      width: '90%',
+      boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+      position: 'relative'
+    });
 
+    // Header
     const header = document.createElement('div');
     header.className = 'modal-header';
-    header.style.cssText = `
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    `;
+    Object.assign(header.style, {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: '16px'
+    });
 
     const title = document.createElement('h2');
     title.textContent = this.options.title;
-    title.style.cssText = `
-      margin: 0;
-      font-size: 24px;
-    `;
+    Object.assign(title.style, { margin: 0, fontSize: '24px' });
 
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '&times;';
     closeBtn.className = 'modal-close';
-    closeBtn.style.cssText = `
-      background: none;
-      border: none;
-      font-size: 32px;
-      cursor: pointer;
-      color: #666;
-      padding: 0;
-      width: 32px;
-      height: 32px;
-      line-height: 1;
-    `;
+    Object.assign(closeBtn.style, {
+      background: 'none',
+      border: 'none',
+      fontSize: '32px',
+      cursor: 'pointer',
+      color: '#666',
+      padding: '0',
+      width: '32px',
+      height: '32px',
+      lineHeight: '1'
+    });
     closeBtn.addEventListener('click', () => this.close());
 
     const content = document.createElement('div');
@@ -81,11 +82,10 @@ export class Modal {
     this.modalElement.appendChild(content);
     this.backdropElement.appendChild(this.modalElement);
 
+    // Close on backdrop click
     if (this.options.closeOnBackdrop) {
       this.backdropElement.addEventListener('click', (e) => {
-        if (e.target === this.backdropElement) {
-          this.close();
-        }
+        if (e.target === this.backdropElement) this.close();
       });
     }
 
@@ -93,9 +93,7 @@ export class Modal {
   }
 
   handleEscape = (e) => {
-    if (e.key === 'Escape') {
-      this.close();
-    }
+    if (e.key === 'Escape') this.close();
   };
 
   open() {
@@ -105,14 +103,11 @@ export class Modal {
   }
 
   close() {
-    if (this.backdropElement && this.backdropElement.parentNode) {
+    if (this.backdropElement?.parentNode) {
       this.backdropElement.parentNode.removeChild(this.backdropElement);
       document.body.style.overflow = '';
       document.removeEventListener('keydown', this.handleEscape);
-      
-      if (this.options.onClose) {
-        this.options.onClose();
-      }
+      if (typeof this.options.onClose === 'function') this.options.onClose();
     }
   }
 }
