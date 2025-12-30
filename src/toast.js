@@ -9,10 +9,9 @@ export class Toast {
     this.options = {
       message: options.message || '',
       type: options.type || 'info',
-      duration: options.duration || 3000,
+      duration: options.duration ?? 3000,
       position: options.position || 'top-right'
     };
-    
     this.element = null;
   }
 
@@ -41,28 +40,23 @@ export class Toast {
   create() {
     this.element = document.createElement('div');
     this.element.className = 'toast';
-    
+
     const typeStyles = this.getTypeStyles();
     const positionStyles = this.getPositionStyles();
-    
-    const positionCSS = Object.entries(positionStyles)
-      .map(([key, value]) => `${key}: ${value}`)
-      .join('; ');
-    
-    this.element.style.cssText = `
-      position: fixed;
-      ${positionCSS};
-      background: ${typeStyles.background};
-      color: ${typeStyles.color};
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 9999;
-      font-size: 14px;
-      min-width: 200px;
-      max-width: 400px;
-      animation: slideIn 0.3s ease-out;
-    `;
+    Object.assign(this.element.style, {
+      position: 'fixed',
+      padding: '16px 24px',
+      borderRadius: '8px',
+      boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+      zIndex: 9999,
+      fontSize: '14px',
+      minWidth: '200px',
+      maxWidth: '400px',
+      animation: 'slideIn 0.3s ease-out',
+      ...positionStyles,
+      background: typeStyles.background,
+      color: typeStyles.color
+    });
 
     this.element.textContent = this.options.message;
 
@@ -71,24 +65,12 @@ export class Toast {
       style.id = 'toast-styles';
       style.textContent = `
         @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         @keyframes slideOut {
-          from {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          to {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
+          from { opacity: 1; transform: translateY(0); }
+          to { opacity: 0; transform: translateY(-20px); }
         }
       `;
       document.head.appendChild(style);
@@ -100,20 +82,18 @@ export class Toast {
     document.body.appendChild(this.element);
 
     if (this.options.duration > 0) {
-      setTimeout(() => {
-        this.dismiss();
-      }, this.options.duration);
+      setTimeout(() => this.dismiss(), this.options.duration);
     }
   }
 
   dismiss() {
-    if (this.element && this.element.parentNode) {
-      this.element.style.animation = 'slideOut 0.3s ease-out';
-      setTimeout(() => {
-        if (this.element && this.element.parentNode) {
-          this.element.parentNode.removeChild(this.element);
-        }
-      }, 300);
-    }
+    if (!this.element || !this.element.parentNode) return;
+
+    this.element.style.animation = 'slideOut 0.3s ease-out';
+    setTimeout(() => {
+      if (this.element && this.element.parentNode) {
+        this.element.parentNode.removeChild(this.element);
+      }
+    }, 300);
   }
 }
