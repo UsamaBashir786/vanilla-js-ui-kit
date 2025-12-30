@@ -27,9 +27,12 @@ Clone or download the repository and import the components directly using ES mod
 
 ```bash
 git clone https://github.com/UsamaBashir786/vanilla-js-ui-kit.git
+cd vanilla-js-ui-kit
+npm install
+npm start
 ```
 
-Then include the required component files from the src/ directory.
+Then include the required component files from the demo/src/ directory.
 
 ### CDN (Experimental)
 
@@ -37,11 +40,11 @@ For testing or demo purposes, you can import individual components directly from
 
 ```html
 <script type="module">
-  import { Modal } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/modal.js';
-  import { Toast } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/toast.js';
-  import { Tabs } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/tabs.js';
-  import { Dropdown } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/dropdown.js';
-  import { Accordion } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/accordion.js';
+  import { Modal } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/modal.js';
+  import { Toast } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/toast.js';
+  import { Tabs } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/tabs.js';
+  import { Dropdown } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/dropdown.js';
+  import { Accordion } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/demo/src/accordion.js';
 </script>
 ```
 
@@ -52,7 +55,7 @@ Note: For production usage, it is recommended to bundle the files locally.
 ### Modal
 
 ```js
-import { Modal } from './src/modal.js';
+import { Modal } from './demo/src/modal.js';
 
 const modal = new Modal({
   title: 'Welcome',
@@ -66,7 +69,7 @@ modal.open();
 ### Toast
 
 ```js
-import { Toast } from './src/toast.js';
+import { Toast } from './demo/src/toast.js';
 
 Toast.show({
   message: 'Operation completed successfully!',
@@ -78,7 +81,7 @@ Toast.show({
 ### Tabs
 
 ```js
-import { Tabs } from './src/tabs.js';
+import { Tabs } from './demo/src/tabs.js';
 
 new Tabs({
   container: document.getElementById('tabs-container')
@@ -88,7 +91,7 @@ new Tabs({
 ### Dropdown
 
 ```js
-import { Dropdown } from './src/dropdown.js';
+import { Dropdown } from './demo/src/dropdown.js';
 
 const dropdown = new Dropdown({
   trigger: document.getElementById('dropdown-btn'),
@@ -100,7 +103,7 @@ dropdown.init();
 ### Accordion
 
 ```js
-import { Accordion } from './src/accordion.js';
+import { Accordion } from './demo/src/accordion.js';
 
 const accordion = new Accordion({
   container: document.getElementById('accordion-container')
@@ -117,7 +120,16 @@ The components are suitable for cross-browser testing using tools such as Browse
 
 ## Demo
 
-To run the demo locally, you must use a local web server (ES modules require HTTP).
+To run the demo locally:
+
+### Using npm (Recommended)
+
+```bash
+npm install
+npm start
+```
+
+The demo will automatically open in your browser at `http://localhost:3000` (or the next available port).
 
 ### Using Python
 
