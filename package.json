@@ -1,9 +1,14 @@
 {
   "name": "vanilla-js-ui-kit",
   "version": "1.0.0",
-  "description": "A lightweight, dependency-free JavaScript UI components library for cross-browser compatible user interfaces",
+  "description": "A lightweight, dependency-free JavaScript UI components library for building cross-browser compatible user interfaces",
   "main": "src/modal.js",
   "type": "module",
+  "scripts": {
+    "start": "npx serve demo",
+    "test": "echo \"No automated tests yet\"",
+    "build": "echo \"No build step required for vanilla JS\""
+  },
   "keywords": [
     "ui",
     "components",
@@ -16,10 +21,13 @@
     "tabs",
     "frontend"
   ],
-  "author": "",
+  "author": "Your Name",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/yourusername/vanilla-js-ui-kit"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
   }
 }

@@ -4,155 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanilla JS UI Kit - Demo</title>
-<style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #24292f;
-      background: #ffffff;
-      padding: 0;
-    }
-    
-    .header {
-      background: #24292f;
-      color: #ffffff;
-      padding: 24px 0;
-      border-bottom: 1px solid #d0d7de;
-    }
-    
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    
-    .header h1 {
-      font-size: 28px;
-      font-weight: 600;
-      margin: 0;
-    }
-    
-    .header p {
-      margin: 8px 0 0;
-      color: #8b949e;
-      font-size: 16px;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-    
-    .section {
-      margin-bottom: 64px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid #d0d7de;
-    }
-    
-    .section:last-child {
-      border-bottom: none;
-    }
-    
-    .section h2 {
-      color: #24292f;
-      margin-bottom: 8px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-    
-    .section p {
-      color: #57606a;
-      margin-bottom: 24px;
-      font-size: 16px;
-    }
-    
-    .button-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    
-    button {
-      background: #2da44e;
-      color: #ffffff;
-      border: 1px solid rgba(27, 31, 36, 0.15);
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
-    }
-    
-    button:hover {
-      background: #2c974b;
-    }
-    
-    button:active {
-      background: #298e46;
-      box-shadow: inset 0 1px 0 rgba(20, 70, 32, 0.2);
-    }
-    
-    button.secondary {
-      background: #ffffff;
-      color: #24292f;
-      border: 1px solid #d0d7de;
-    }
-    
-    button.secondary:hover {
-      background: #f6f8fa;
-      border-color: #d0d7de;
-    }
-    
-    button.secondary:active {
-      background: #edeff2;
-    }
-    
-    #tabs-container {
-      margin-top: 16px;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    
-    .tab-content {
-      padding: 24px;
-      background: #ffffff;
-    }
-    
-    .tab-content h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #24292f;
-    }
-    
-    .tab-content p {
-      color: #57606a;
-      margin: 0;
-    }
-    
-    code {
-      background: #f6f8fa;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-      font-size: 85%;
-    }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #24292f; background: #fff; padding: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+    h1 { font-size: 28px; margin-bottom: 32px; }
+    .section { margin-bottom: 64px; padding-bottom: 32px; border-bottom: 1px solid #d0d7de; }
+    .section:last-child { border-bottom: none; }
+    .section h2 { font-size: 24px; margin-bottom: 12px; }
+    .section p { font-size: 16px; color: #57606a; margin-bottom: 24px; }
+    .button-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    button { background: #2da44e; color: #fff; border: 1px solid rgba(27,31,36,0.15); padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; transition: 0.2s; }
+    button:hover { background: #2c974b; }
+    button:active { background: #298e46; }
+    button.secondary { background: #fff; color: #24292f; border: 1px solid #d0d7de; }
+    button.secondary:hover { background: #f6f8fa; }
+    #tabs-container { margin-top: 16px; border: 1px solid #d0d7de; border-radius: 6px; overflow: hidden; }
+    .tab-list { display: flex; }
+    .tab-list button { flex: 1; border: none; background: #f6f8fa; padding: 12px; cursor: pointer; font-weight: 500; }
+    .tab-list button.active { background: #fff; border-bottom: 2px solid #2da44e; }
+    .tab-content { padding: 24px; display: none; background: #fff; }
+    .tab-content.active { display: block; }
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; font-size: 85%; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Vanilla JS UI Kit Demo</h1>
-    
+
     <div class="section">
       <h2>Modal Component</h2>
       <div class="button-group">
@@ -160,36 +39,36 @@
         <button id="open-custom-modal" class="secondary">Open Custom Modal</button>
       </div>
     </div>
-    
+
     <div class="section">
       <h2>Toast Notifications</h2>
       <div class="button-group">
-        <button id="toast-success">Success Toast</button>
-        <button id="toast-error" class="secondary">Error Toast</button>
-        <button id="toast-warning" class="secondary">Warning Toast</button>
-        <button id="toast-info" class="secondary">Info Toast</button>
+        <button id="toast-success">Success</button>
+        <button id="toast-error" class="secondary">Error</button>
+        <button id="toast-warning" class="secondary">Warning</button>
+        <button id="toast-info" class="secondary">Info</button>
       </div>
     </div>
-    
+
     <div class="section">
       <h2>Tabs Component</h2>
       <div id="tabs-container">
         <div class="tab-list">
-          <button data-tab-button>Tab 1</button>
+          <button data-tab-button class="active">Tab 1</button>
           <button data-tab-button>Tab 2</button>
           <button data-tab-button>Tab 3</button>
         </div>
-        <div data-tab-panel class="tab-content">
+        <div data-tab-panel class="tab-content active">
           <h3>First Tab Content</h3>
-          <p>This is the content of the first tab. It can contain any HTML elements.</p>
+          <p>This is the content of the first tab.</p>
         </div>
         <div data-tab-panel class="tab-content">
           <h3>Second Tab Content</h3>
-          <p>This is the content of the second tab. Switch between tabs to see the content change.</p>
+          <p>This is the content of the second tab.</p>
         </div>
         <div data-tab-panel class="tab-content">
           <h3>Third Tab Content</h3>
-          <p>This is the content of the third tab. The tabs component is fully functional and customizable.</p>
+          <p>This is the content of the third tab.</p>
         </div>
       </div>
     </div>
@@ -200,10 +79,11 @@
     import { Toast } from '../src/toast.js';
     import { Tabs } from '../src/tabs.js';
 
+    // Modal buttons
     document.getElementById('open-modal').addEventListener('click', () => {
       const modal = new Modal({
-        title: 'Welcome to Vanilla JS UI Kit',
-        content: '<p>This is a simple modal dialog built with pure JavaScript.</p><p>Click the X button, press Escape, or click outside to close.</p>'
+        title: 'Welcome',
+        content: '<p>This is a simple modal dialog.</p>'
       });
       modal.open();
     });
@@ -212,56 +92,19 @@
       const modal = new Modal({
         title: 'Custom Modal',
         content: '<p>This modal has a custom onClose callback.</p>',
-        onClose: () => {
-          Toast.show({
-            message: 'Modal was closed!',
-            type: 'info',
-            duration: 2000
-          });
-        }
+        onClose: () => Toast.show({ message: 'Modal closed!', type: 'info', duration: 2000 })
       });
       modal.open();
     });
 
-    document.getElementById('toast-success').addEventListener('click', () => {
-      Toast.show({
-        message: 'Operation completed successfully!',
-        type: 'success',
-        duration: 3000
-      });
-    });
+    // Toast buttons
+    document.getElementById('toast-success').addEventListener('click', () => Toast.show({ message: 'Success!', type: 'success', duration: 3000 }));
+    document.getElementById('toast-error').addEventListener('click', () => Toast.show({ message: 'Error!', type: 'error', duration: 3000 }));
+    document.getElementById('toast-warning').addEventListener('click', () => Toast.show({ message: 'Warning!', type: 'warning', duration: 3000 }));
+    document.getElementById('toast-info').addEventListener('click', () => Toast.show({ message: 'Info message', type: 'info', duration: 3000 }));
 
-    document.getElementById('toast-error').addEventListener('click', () => {
-      Toast.show({
-        message: 'An error occurred!',
-        type: 'error',
-        duration: 3000
-      });
-    });
-
-    document.getElementById('toast-warning').addEventListener('click', () => {
-      Toast.show({
-        message: 'Warning: Please review your input',
-        type: 'warning',
-        duration: 3000
-      });
-    });
-
-    document.getElementById('toast-info').addEventListener('click', () => {
-      Toast.show({
-        message: 'This is an informational message',
-        type: 'info',
-        duration: 3000
-      });
-    });
-
-    const tabs = new Tabs({
-      container: '#tabs-container',
-      defaultTab: 0,
-      onChange: (index) => {
-        console.log('Active tab:', index);
-      }
-    });
+    // Tabs
+    const tabs = new Tabs({ container: '#tabs-container', defaultTab: 0 });
     tabs.init();
   </script>
 </body>
