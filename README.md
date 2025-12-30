@@ -1,89 +1,101 @@
 # Vanilla JS UI Kit
 
-A lightweight, dependency-free JavaScript UI components library for building responsive user interfaces. Designed with cross-browser compatibility in mind, making it ideal for testing across multiple browsers and devices.
+A lightweight, dependency-free JavaScript UI components library for building responsive user interfaces using pure JavaScript. Designed with cross-browser compatibility in mind, making it ideal for testing across multiple browsers and devices.
 
 ## Features
 
-- **Zero Dependencies**: Pure vanilla JavaScript with no external libraries required
-- **Lightweight**: Minimal bundle size for fast page loads
-- **Cross-Browser Compatible**: Tested across modern browsers (Chrome, Firefox, Safari, Edge)
-- **ES Modules**: Modern JavaScript module system
-- **Responsive**: Works seamlessly on desktop and mobile devices
-- **Accessible**: Built with accessibility best practices
+- **Zero Dependencies** – Pure vanilla JavaScript, no external libraries
+- **Lightweight** – Minimal footprint and fast performance
+- **Cross-Browser Compatible** – Works consistently across Chrome, Firefox, Safari, and Edge
+- **ES Modules** – Modern JavaScript module architecture
+- **Responsive** – Mobile- and desktop-friendly by default
+- **Accessible** – Keyboard support and accessibility best practices
 
 ## Components
 
-- **Modal**: Customizable modal dialogs with backdrop and close functionality
-- **Toast**: Non-intrusive notification messages with auto-dismiss
-- **Tabs**: Tab navigation system for organizing content
+- **Modal** – Configurable modal dialogs with backdrop, Escape key handling, and callbacks
+- **Toast** – Lightweight notification system with multiple message types
+- **Tabs** – Accessible tab navigation for structured content
 
 ## Installation
 
-### Via npm
+### Direct Usage (Recommended)
+
+Clone or download the repository and import the components directly using ES modules.
+
 ```bash
-npm install vanilla-js-ui-kit
+git clone https://github.com/UsamaBashir786/vanilla-js-ui-kit.git
 ```
 
-### Via CDN
+Then include the required component files from the src/ directory.
+
+### CDN (Experimental)
+
+For testing or demo purposes, you can import individual components directly from GitHub:
+
 ```html
 <script type="module">
-  import { Modal, Toast, Tabs } from 'https://cdn.jsdelivr.net/npm/vanilla-js-ui-kit/src/modal.js';
+  import { Modal } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/modal.js';
+  import { Toast } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/toast.js';
+  import { Tabs } from 'https://raw.githubusercontent.com/UsamaBashir786/vanilla-js-ui-kit/main/src/tabs.js';
 </script>
 ```
 
-### Manual Download
-
-Download the source files from the `src/` directory and include them in your project.
+Note: For production usage, it is recommended to bundle the files locally.
 
 ## Usage
 
 ### Modal
-```javascript
+
+```js
 import { Modal } from './src/modal.js';
 
 const modal = new Modal({
   title: 'Welcome',
-  content: 'This is a modal dialog',
-  onClose: () => console.log('Modal closed')
+  content: '<p>This is a modal dialog</p>',
+  onClose: () => {
+    console.log('Modal closed');
+  }
 });
 
 modal.open();
 ```
 
 ### Toast
-```javascript
+
+```js
 import { Toast } from './src/toast.js';
 
 Toast.show({
-  message: 'Operation successful!',
+  message: 'Operation completed successfully!',
   type: 'success',
   duration: 3000
 });
 ```
 
 ### Tabs
-```javascript
+
+```js
 import { Tabs } from './src/tabs.js';
 
-const tabs = new Tabs({
-  container: '#tabs-container',
-  defaultTab: 0
+new Tabs({
+  container: document.getElementById('tabs-container')
 });
-
-tabs.init();
 ```
 
 ## Browser Testing
 
-This library is designed to be tested across multiple browsers and devices. It follows web standards and uses progressive enhancement techniques to ensure compatibility.
+This project is actively used to validate UI behavior across multiple browsers and devices.
+It follows web standards and progressive enhancement principles to ensure consistent rendering.
 
-Ideal for integration with cross-browser testing tools like BrowserStack, Selenium, or Playwright.
+The components are suitable for cross-browser testing using tools such as BrowserStack, Playwright, or Selenium.
 
 ## Demo
 
-To run the demo locally, you need to use a local web server (ES modules require HTTP protocol):
+To run the demo locally, you must use a local web server (ES modules require HTTP).
 
-### Using Python (Recommended)
+### Using Python
+
 ```bash
 # Python 3
 python -m http.server 8000
@@ -92,53 +104,88 @@ python -m http.server 8000
 python -m SimpleHTTPServer 8000
 ```
 
-Then open `http://localhost:8000/demo/index.html` in your browser.
+Open the demo in your browser:
+
+```bash
+http://localhost:8000/demo/index.html
+```
 
 ### Using Node.js
-```bash
-# Using npx (no installation required)
-npx serve
 
-# Or install http-server globally
+```bash
+npx serve
+```
+
+or
+
+```bash
 npm install -g http-server
 http-server
 ```
 
 ### Using VS Code
 
-1. Install the "Live Server" extension
-2. Right-click on `demo/index.html`
-3. Select "Open with Live Server"
+1. Install the Live Server extension
+2. Right-click demo/index.html
+3. Select Open with Live Server
 
-**Note:** Opening `demo/index.html` directly from the file system will result in CORS errors due to browser security restrictions with ES modules.
+Opening the file directly from the file system may cause CORS issues due to ES module restrictions.
 
 ## Contributing
 
-Contributions are welcome! Please follow these guidelines:
+Contributions are welcome.
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch
+
+```bash
+git checkout -b feature/your-feature
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Add new feature"
+```
+
+4. Push to your branch
+
+```bash
+git push origin feature/your-feature
+```
+
 5. Open a Pull Request
 
-Please ensure your code:
-- Follows the existing code style
-- Works across modern browsers
-- Includes comments for complex logic
-- Does not introduce external dependencies
+Please ensure:
+
+- Code follows existing style
+- No external dependencies are added
+- Changes work across modern browsers
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License.
+See the LICENSE file for details.
 
 ## Support
 
-If you find this project useful, please consider:
-- Starring the repository
-- Reporting bugs or requesting features via Issues
-- Contributing code improvements
+If you find this project useful:
+
+- ⭐ Star the repository
+- 🐞 Report bugs via GitHub Issues
+- 🚀 Suggest improvements or features
+
+Built with ❤️ for the open-source community
 
 ---
 
-Built with ❤️ for the open-source community
+## ✅ WHAT TO DO NOW (IMPORTANT)
+
+1. Replace your `README.md` with the above
+2. Commit it:
+
+```bash
+git add README.md
+git commit -m "Improve documentation and usage examples"
+git push
+```
