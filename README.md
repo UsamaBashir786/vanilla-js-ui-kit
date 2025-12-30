@@ -199,7 +199,6 @@ Please ensure:
 - No external dependencies are added
 - Changes work across modern browsers
 
-![alt text](image.png)
 
 ## License
 
