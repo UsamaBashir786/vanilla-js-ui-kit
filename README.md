@@ -81,7 +81,36 @@ Ideal for integration with cross-browser testing tools like BrowserStack, Seleni
 
 ## Demo
 
-Open `demo/index.html` in your browser to see the components in action.
+To run the demo locally, you need to use a local web server (ES modules require HTTP protocol):
+
+### Using Python (Recommended)
+```bash
+# Python 3
+python -m http.server 8000
+
+# Python 2
+python -m SimpleHTTPServer 8000
+```
+
+Then open `http://localhost:8000/demo/index.html` in your browser.
+
+### Using Node.js
+```bash
+# Using npx (no installation required)
+npx serve
+
+# Or install http-server globally
+npm install -g http-server
+http-server
+```
+
+### Using VS Code
+
+1. Install the "Live Server" extension
+2. Right-click on `demo/index.html`
+3. Select "Open with Live Server"
+
+**Note:** Opening `demo/index.html` directly from the file system will result in CORS errors due to browser security restrictions with ES modules.
 
 ## Contributing
 
@@ -113,30 +142,3 @@ If you find this project useful, please consider:
 ---
 
 Built with ❤️ for the open-source community
-```
-
----
-
-# LICENSE
-```
-MIT License
-
-Copyright (c) 2025
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
